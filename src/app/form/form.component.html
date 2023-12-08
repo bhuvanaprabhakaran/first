@@ -1,0 +1,35 @@
+<div class="container ">
+    <div class="row d-flex text-end mt-4">
+        <form [formGroup]="newform">
+            <label for="">Enter Number :</label>
+            <input type="number" class="ms-1 p-1" formControlName="number">
+            <button class="btn btn-primary ms-2" (click)="onsubmit()">Submit</button>
+        </form>
+    </div>
+    <div class="justify-content-center text-center ">
+        <div *ngFor="let item of data; let i = index" class="row">
+            <div class="card p-4 mt-3 col-sm-6">
+                <form>
+                    <input type="text" class="form-control" [(ngModel)]="item.num1" [name]="'num1'">
+                    <input type="text" class="form-control mt-2" [(ngModel)]="item.num2" [name]="'num2'">
+                    <input type="text" class="form-control mt-2" [(ngModel)]="item.num3" [name]="'num3'">
+                    <button class="btn btn-primary mt-3" (click)="onFormSubmit(item)">Submit</button>
+                </form>
+            </div>
+            <div class="col-sm-6">
+                <table *ngIf="item.submitted" class="table mt-3">
+                    <tr>
+                        <th>Number 1</th>
+                        <th>Number 2</th>
+                        <th>Number 3</th>
+                    </tr>
+                    <tr>
+                        <td>{{ item.num1 }}</td>
+                        <td>{{ item.num2 }}</td>
+                        <td>{{ item.num3 }}</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
